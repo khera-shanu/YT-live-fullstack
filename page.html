@@ -1,0 +1,52 @@
+<div id="car">
+  <div id="car_top"></div>
+  <div id="car_body"></div>
+  <div id="wheel_1" class="wheel"></div>
+  <div id="wheel_2" class="wheel"></div>
+</div>
+
+<style>
+  #car{
+    position: relative;
+    display: inline-block;
+  }
+  #car_top{
+    height: 50px;
+    background-color: crimson;
+    width: 150px;
+    position: relative;
+    left: 20px;
+  }
+  #car_body{
+    height: 50px;
+    background-color: crimson;
+    width: 250px;
+  }
+  .wheel{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+  }
+  #wheel_1{
+    left: 20px;
+    top: -25px;
+  }
+  #wheel_2{
+    left: 120px;
+    top: -25px;
+  }
+</style>
+
+<script>
+  let left = 10;
+  function move_car(){
+    const car = document.querySelector("#car");
+    left += 10;
+    car.style.left = left;
+    console.log(left, car.style.left);
+  }
+  setInterval(move_car, 50);
+</script>
