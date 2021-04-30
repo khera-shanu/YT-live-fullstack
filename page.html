@@ -1,5 +1,6 @@
 <div id="car">
   <div id="car_top"></div>
+  <div id="car_window"></div>
   <div id="car_body"></div>
   <div id="wheel_1" class="wheel"></div>
   <div id="wheel_2" class="wheel"></div>
@@ -7,6 +8,7 @@
 
 <style>
   #car{
+    margin-top:100px;
     position: relative;
     display: inline-block;
   }
@@ -16,11 +18,22 @@
     width: 150px;
     position: relative;
     left: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  #car_window{
+    height: 30px;
+    width: 50px;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    left: 114px;
   }
   #car_body{
     height: 50px;
     background-color: crimson;
     width: 250px;
+    border-radius: 5px;
   }
   .wheel{
     width: 50px;
@@ -42,11 +55,19 @@
 
 <script>
   let left = 10;
+  let sign = 1;
   function move_car(){
     const car = document.querySelector("#car");
-    left += 10;
+    left += sign*10;
+    if(left + 150 > window.innerWidth && sign === 1){
+      car.style.transform = "scaleX(-1)";
+      sign = -1;
+    }
+    else if(left < 150 && sign === -1){
+      car.style.transform = "scaleX(1)";
+      sign = 1;
+    }
     car.style.left = left;
-    console.log(left, car.style.left);
   }
-  setInterval(move_car, 50);
+  setInterval(move_car, 30);
 </script>
